@@ -3,7 +3,7 @@ import "./ContactList.css";
 import { useSelector } from "react-redux";
 import { getFilter } from "../../redux/phonebook/phonebook-selectors";
 import { filterContacts } from "../../helpers/filterContacts";
-import { useGetContactsQuery } from "../../redux/rtk-phonebook/phonebookApi";
+import { useGetContactsQuery } from "../../redux/phonebook/phonebookApi";
 
 const ContactList = () => {
   const filter = useSelector(getFilter);

@@ -1,13 +1,18 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import logger from 'redux-logger'
-import { phonebookReducer } from './phonebook/phonebook-reducers'
+import { setupListeners } from '@reduxjs/toolkit/query'
 
-const middleware = [...getDefaultMiddleware(), logger]
+import { phonebookApi } from './phonebook/phonebookApi'
+import { filterReducer } from './phonebook/filterReducer'
 
-const store = configureStore({
-  reducer: phonebookReducer,
-  middleware,
-  devTools: true,
+export const store = configureStore({
+  reducer: {
+    [phonebookApi.reducerPath]: phonebookApi.reducer,
+    filterReducer,
+  },
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    phonebookApi.middleware,
+  ],
 })
 
-export default store
+setupListeners(store.dispatch)

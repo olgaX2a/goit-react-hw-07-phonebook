@@ -1,5 +1,5 @@
 import "./ContactList.css";
-import { useDeleteContactMutation } from "../../redux/rtk-phonebook/phonebookApi";
+import { useDeleteContactMutation } from "../../redux/phonebook/phonebookApi";
 
 const PhonebookListItem = ({ name, number, id }) => {
   const [deleteContact] = useDeleteContactMutation();

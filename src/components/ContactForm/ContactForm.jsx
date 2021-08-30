@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./ContactForm.css";
-import { useSelector, useDispatch } from "react-redux";
-import { getContacts } from "../../redux/phonebook/phonebook-selectors";
-// import { addContact } from "../../redux/phonebook/phonebook-actions";
-import { useAddContactMutation } from "../../redux/rtk-phonebook/phonebookApi";
+import { useGetContactsQuery } from "../../redux/phonebook/phonebookApi";
+import { useAddContactMutation } from "../../redux/phonebook/phonebookApi";
 
 function ContactForm() {
-  const dispatch = useDispatch();
-  const fullContactList = useSelector(getContacts);
+  const { data } = useGetContactsQuery();
   const [addContact] = useAddContactMutation();
 
   const [name, setName] = useState("");
@@ -38,26 +35,26 @@ function ContactForm() {
 
   const isInContactList = (contact) => {
     const normalizedName = contact.name.toLowerCase();
-    const names = fullContactList.map((el) => el.name.toLowerCase());
+    const names = data.map((el) => el.name.toLowerCase());
     const existingName = names.find((name) => name === normalizedName);
     return existingName;
   };
 
   const handleUserFormSubmit = (event) => {
     event.preventDefault();
+
     const contact = {
       id: uuidv4(),
       name: name,
       number: number,
     };
 
-    addContact(contact);
-    // if (!isInContactList(contact)) {
-    //   dispatch(addContact(contact));
-    //   resetForm();
-    // } else {
-    //   return alert("This contact is already in contact list!");
-    // }
+    if (!isInContactList(contact)) {
+      addContact(contact);
+      resetForm();
+    } else {
+      return alert("This contact is already in contact list!");
+    }
   };
 
   return (

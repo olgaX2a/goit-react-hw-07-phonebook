@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getFilter } from "../../redux/phonebook/phonebook-selectors";
-import { filterContact } from "../../redux/rtk-phonebook/filterReducer";
+import { filterContact } from "../../redux/phonebook/filterReducer";
 
 const Filter = () => {
   const dispatch = useDispatch();
