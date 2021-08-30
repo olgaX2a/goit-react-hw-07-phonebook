@@ -1,0 +1,23 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  border: 1px solid black;
+  padding: 10px;
+}
+.Form__label {
+  display: flex;
+  flex-direction: column;
+}
+.Form__add-btn {
+  margin-top: 10px;
+  padding: 10px;
+  line-height: 0px;
+  border-radius: 2px;
+  background-color: white;
+}
+.Form__add-btn:hover,
+.Form__add-btn:focus {
+  background-color: blue;
+  color: white;
+}

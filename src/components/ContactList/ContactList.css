@@ -1,0 +1,27 @@
+.Contact__list {
+  max-width: ;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0px;
+}
+.Contact__item {
+  display: flex;
+  flex-direction: row;
+  line-height: 0px;
+}
+.Contact__info {
+  margin-right: 5px;
+}
+.Contact__delete-btn {
+  padding: 5px;
+  line-height: 0px;
+  border-radius: 2px;
+  background-color: white;
+}
+.Contact__delete-btn:hover,
+.Contact__delete-btn:focus {
+  border: none;
+  background-color: blue;
+  color: white;
+}
